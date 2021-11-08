@@ -4,8 +4,8 @@
 
 
 #Variables
-#Change the variables
-export PROJECT_ID=pure-particle-321405 
+#Changed variables
+export PROJECT_ID=poc01-330806 
 #Fixed variables
 export COMPOSER_ENV=composer-test-env
 export ENVIRONMENT_NAME=data-migration-cloudstorage
