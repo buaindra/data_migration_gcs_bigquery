@@ -1,7 +1,14 @@
-#!/bin/bash
+gcloud auth activate-service-account username@development-123456.iam.gserviceaccount.com --key-file=service_account.json
 
-Project_ID="$1"
+export ACCOUNT=indranilbua.1994.01@gmail.com
+export PROJECT_ID=poc01-330806
+export LOCATION=us-central1
 
-Return_Message=`gcloud services list --enabled --project "$Project_ID"`
+gcloud config set account $ACCOUNT
+gcloud config set project $PROJECT_ID
 
-echo $Return_Message
+export SERVICE_LIST=`gcloud services list --enabled --project $PROJECT_ID`
+echo "$SERVICE_LIST"
+
+export COMPOSER_ENV_LIST=`gcloud composer environments list --locations $LOCATION`
+echo "$COMPOSER_ENV_LIST"

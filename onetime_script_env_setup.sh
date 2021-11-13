@@ -1,8 +1,6 @@
 #Created by: Indranil Pal
 #Created Date: 08-11-2021
 #Modified Date:
-
-
 #Variables
 #Changed variables
 export PROJECT_ID=poc01-330806 
@@ -21,4 +19,5 @@ echo "Composer API has been enabled"
 #Create Composer Environment
 gcloud composer environments create $COMPOSER_ENV --location $LOCATION
 echo "Composer env has been created"
+
 
