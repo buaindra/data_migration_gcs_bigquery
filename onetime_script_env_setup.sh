@@ -3,6 +3,7 @@
 #Modified Date:
 #Variables
 #Changed variables
+
 export PROJECT_ID=poc01-330806 
 #Fixed variables
 export COMPOSER_ENV=data-migration-cloudstorage
@@ -19,5 +20,7 @@ echo "Composer API has been enabled"
 #Create Composer Environment
 gcloud composer environments create $COMPOSER_ENV --location $LOCATION
 echo "Composer env has been created"
+
+
 
 
