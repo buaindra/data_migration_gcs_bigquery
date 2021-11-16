@@ -13,13 +13,6 @@ export LOCATION=us-central1
 gcloud config set project $PROJECT_ID
 echo "Project has been set"
 
-#Enable the Composer API
-gcloud services enable composer.googleapis.com
-echo "Composer API has been enabled"
-
-#Create Composer Environment
-gcloud composer environments create $COMPOSER_ENV --location $LOCATION
-echo "Composer env has been created"
 
 
 
