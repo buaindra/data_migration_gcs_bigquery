@@ -1,4 +1,5 @@
 #Created by: Indranil Pal
+#Ref: https://cloud.google.com/bigquery-transfer/docs/teradata-migration#gcloud
 
 #Variables
 export PROJECTID=poc01-330806
@@ -27,8 +28,15 @@ gcloud services enable pubsub.googleapis.com
 echo "APIs have been enabled"
 
 #Bigquery Dataset creation
-bq --location=$BQ_LOC  mk --dataset --description "dataset created for database migration" $PROJECTID:$DATASET
+#if [[ $(bq ls --filter "labels." --project_id $PROJECTID) ]]
+if [[ ! $(bq show "$DATASET" --project_id "$PROJECTID") ]]
+then
+  echo "creating the dataset: $PROJECTID:$DATASET"
+  bq --location=$BQ_LOC  mk --dataset --description "dataset created for database migration" $PROJECTID:$DATASET
+else
+  echo "dataset already created"
+fi
+
+#Create IAM Service Account (IAM Role: bigquery.admin, storage.objectAdmin)
 
 echo "database migration env creation completed.."
-
-
