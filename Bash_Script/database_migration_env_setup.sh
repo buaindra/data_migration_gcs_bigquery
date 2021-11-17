@@ -74,19 +74,26 @@ echo "database migration env creation completed.."
 echo "!!! IMPORTANT !!!"
 echo "open a new tab in browser, and paste the url: https://storage.googleapis.com/data_transfer_agent/latest/mirroring-agent.jar"
 while true; do
-	echo "Have you downloaded the migration agent? If yes then press y and if no then press n"
+	echo "Have you downloaded the migration agent? If yes then press y, if no then press n and don't want to continue then press enter"
 	read answer
 	case $answer in
 		[Yy]* ) echo "going to next step"; break;;
-		#[Nn]* ) exit;;
-		* ) echo "Please answer yes or no.";;
+		[Nn]* ) continue;;
+		* ) echo "script execution has been terminated"; sleep 3s; exit 1;;
 	esac
 done
 
 
 #Step2: Set up a BigQuery Data Transfer Service transfer
-bq mk --transfer_config --project_id=$PROJECTID --target_dataset=$DATASET --display_name='database migration' --params='{"bucket": "$GCS_BUCKET", "database_type": "$MIGRATION_DATABASE_TYPE", "database_name":"$MIGRATION_DATABASE_NAME", "table_name_patterns": ".*", "agent_service_account":"$SERVICE_ACCOUNT_ID@$PROJECTID.iam.gserviceaccount.com", "schema_file_path":"$SCHEMA_FILE_PATH"}' --data_source=on_premises
-echo "BigQuery Data Transfer has been created"
+#bq ls --transfer_config --transfer_location='us' --filter='dataSourceIds:play,adwords'
+if [[ ! $(bq ls --transfer_config --transfer_location="$BQ_LOC" | grep 'database migration') ]]
+then
+	echo "BigQuery Data Transfer being creating..."
+	bq mk --transfer_config --project_id=$PROJECTID --target_dataset=$DATASET --display_name='database migration' --params='{"bucket": "$GCS_BUCKET", "database_type": "$MIGRATION_DATABASE_TYPE", "database_name":"$MIGRATION_DATABASE_NAME", "table_name_patterns": ".*", "agent_service_account":"$SERVICE_ACCOUNT_ID@$PROJECTID.iam.gserviceaccount.com", "schema_file_path":"$SCHEMA_FILE_PATH"}' --data_source=on_premises
+else
+	echo "BigQuery Data Transfer has been created already"
+fi
+
 
 #Step3: Initialize the migration agent
 
