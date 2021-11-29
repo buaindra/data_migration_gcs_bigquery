@@ -1,0 +1,24 @@
+--Ref
+https://cloud.google.com/composer/docs/quickstart#airflow-1_1
+https://airflow.apache.org/docs/apache-airflow/stable/concepts/index.html
+
+--Inside Local GCloud CMD Command
+$ gcloud init
+$ gcloud cloud-shell ssh
+
+--Inside newly opened Putty (CloudShell)
+$ gcloud auth login
+$ gcloud projects list
+$ gcloud config set project <project-id>
+
+--Inside Local GCloud CMD Command
+$ gcloud services enable composer.googleapis.composer
+$ gcloud composer environments create test-composer-env --location us-central1
+$ gcloud composer environments storage dags import --environment test-composer-env --location us-central1 \
+--source C:\Users\Indranil\Documents\GitHub\data_migration_gcs_bigquery\Composer_DAG\Sample_DAG_01.py
+
+
+--gcloud services
+$ gcloud services list
+$ gcloud services list | grep composer
+$ gcloud services enable 

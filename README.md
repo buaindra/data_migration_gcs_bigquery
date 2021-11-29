@@ -2,8 +2,9 @@
 data migration to gcs using storage transfer service and transform &amp; migrate to bigquery using composer, dataflow
 
 ### Ref
-1. Teradata Migration to GCP: https://cloud.google.com/bigquery-transfer/docs/teradata-migration#gcloud
-2. Teradata Migration to GCP(Youtube): https://www.youtube.com/watch?v=HAdcEddg0fE 
+1. Datawarehouse Migration To GCP: https://cloud.google.com/architecture/dw2bq/dw-bq-migration-overview
+2. Teradata Migration to GCP: https://cloud.google.com/bigquery-transfer/docs/teradata-migration#gcloud
+3. Teradata Migration to GCP(Youtube): https://www.youtube.com/watch?v=HAdcEddg0fE 
 
 
 ### Database Migration Environment Set-up

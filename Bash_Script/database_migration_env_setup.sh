@@ -3,10 +3,10 @@
 #Ref: https://cloud.google.com/bigquery-transfer/docs/teradata-migration#gcloud
 
 #Variables
-export PROJECTID=poc01-330806
+export PROJECTID=poc01-330806 #DEVSHELL_PROJECT_ID
 export LOG_FILE=Database_Migration.txt
 export BQ_LOC=us
-export DATASET=Database-Migration
+export DATASET=Database_Migration
 export SERVICE_ACCOUNT_ID=database-migration
 export GCS_BUCKET=$PROJECTID-database-migration
 export MIGRATION_DATABASE_TYPE=Teradata
@@ -38,7 +38,8 @@ echo "APIs have been enabled"
 
 #Bigquery Dataset creation
 #if [[ $(bq ls --filter "labels." --project_id $PROJECTID) ]]
-if [[ ! $(bq show "$DATASET" --project_id "$PROJECTID") ]]
+#bq show Database_Migration --project_id poc01-330806
+if [[ ! $(bq show "$DATASET") ]]
 then
 	echo "creating the dataset: $PROJECTID:$DATASET"
 	bq --location=$BQ_LOC  mk --dataset --description "dataset created for database migration" $PROJECTID:$DATASET
@@ -68,13 +69,14 @@ else
 	echo "bucket already created"
 fi
 
-echo "database migration env creation completed.."
+echo "Database-Migration env creation completed for BigQuery Data Transfer Service.."
 
 #Step1: Download the migration agent
 echo "!!! IMPORTANT !!!"
+echo "Now download the migration agent"
 echo "open a new tab in browser, and paste the url: https://storage.googleapis.com/data_transfer_agent/latest/mirroring-agent.jar"
 while true; do
-	echo "Have you downloaded the migration agent? If yes then press y, if no then press n and don't want to continue then press enter"
+	echo "Have you downloaded the migration agent? If yes then press y+Enter, if no then press n+Enter and don't want to continue then press any key+Enter"
 	read answer
 	case $answer in
 		[Yy]* ) echo "going to next step"; break;;
