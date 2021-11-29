@@ -18,4 +18,14 @@ data migration to gcs using storage transfer service and transform &amp; migrate
 8. ![image](https://user-images.githubusercontent.com/46111257/142033081-7db3be98-8c34-432a-af51-a1cd03357a8e.png)
 
 
+### Django(Python) - GCP
+We will share Django Project setup step by step doc.
+
+Below are some iuseful links:
+1.  https://stackoverflow.com/questions/60188598/accessing-google-cloud-api-from-local-project-not-hosted-on-google-cloud-platfor
+2.  https://cloud.google.com/natural-language/docs/quickstart-client-libraries
+3.  https://cloud.google.com/python
+4.  https://medium.com/google-cloud/using-gcloud-and-python-client-library-with-google-compute-engine-eaf1b19d8099
+
+
 
