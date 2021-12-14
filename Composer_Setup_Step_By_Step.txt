@@ -1,5 +1,6 @@
 --Ref
 https://cloud.google.com/composer/docs/quickstart#airflow-1_1
+https://cloud.google.com/composer/docs/how-to/using/writing-dags
 https://airflow.apache.org/docs/apache-airflow/stable/concepts/index.html
 
 --Inside Local GCloud CMD Command

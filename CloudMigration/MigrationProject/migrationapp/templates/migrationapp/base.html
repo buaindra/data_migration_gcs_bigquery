@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Connect</title>
+    <link rel="stylesheet" href="{% static 'migrationapp/css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'cloud_connect' %}">Cloud Connect</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Pipeline</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Cloud Connect</h5>
+    <p class="card-text">A simple way to <b>track/ migrate/ manage</b> your all cloud resources</p>
+    <a href="#" class="btn btn-primary">More Info</a>
+  </div>
+</div>
+<div>
+  {% block content %}
+
+  {% endblock %}
+</div>
+<script src="{% static 'migrationapp/js/jquery.js' %}"></script>
+<script src="{% static 'migrationapp/js/popper.js' %}"></script>
+<script src="{% static 'migrationapp/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

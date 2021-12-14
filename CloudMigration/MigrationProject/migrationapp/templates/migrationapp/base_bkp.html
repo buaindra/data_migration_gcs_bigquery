@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Connect</title>
+    <link rel="stylesheet" href="{% static 'migrationapp/css/bootstrap.min.css' %}">
+</head>
+<body bgcolor="coral">
+
+<div class="container mt-5">
+    <div class="container p-5 my-5 bg-primary text-white">
+        <h2 class="text-center">Cloud Connect</h2>
+        <p class="text-center">A simple way to <b>track/ migrate/ manage</b> your all cloud resources</p>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+</div>
+<div class="container mt-5">
+    <br/> <hr/>
+    <p class="text-center">@Copyright Reserved with Indranil </p>
+</div>
+
+<script src="{% static 'migrationapp/js/jquery.js' %}"></script>
+<script src="{% static 'migrationapp/js/popper.js' %}"></script>
+<script src="{% static 'migrationapp/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

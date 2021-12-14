@@ -1,0 +1,68 @@
+{% extends 'migrationapp/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        {% if cc %}
+            <p class="text-center alert alert-info"> Cloud: {{cc.cloudName}} And Project: {{cc.projectName}} </p>
+            {% if gcp_bucket %}
+            <table class="table table-striped table-hover">
+                {% for i in gcp_bucket %}
+                <tr>
+                    <td>{{i}}</td>
+                    <td>{{gcp_bucket}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        {% else %}
+            <h4 class="text-center alert alert-warning">No Data Found</h4>
+        {% endif %}
+    </div>
+    <!--<div class="col-sm-2 offset-1">
+        <h4 class="text-center alert alert-info">Pipeline</h4>
+        <a href="#"> Link </a>
+    </div>-->
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        {% if gcp_billing %}
+        <p class="text-center alert alert-info"> Billing Info </p>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Billing Account</th>
+                    <th scope="col">Project name</th>
+                    <th scope="col">Resource</th>
+                    <th scope="col">start_time</th>
+                    <th scope="col">end_time</th>
+                    <th scope="col">key</th>
+                    <th scope="col">value</th>
+                    <th scope="col">location</th>
+                    <th scope="col">region</th>
+                    <th scope="col">zone</th>
+                    <th scope="col">cost</th>
+                    <th scope="col">credits_amount</th>
+                </tr>
+            </thead>
+
+            {% for row in gcp_billing %}
+                <tr>
+                    <td scope="col">{{row.billing_account_id}}</td>
+                    <td scope="col">{{row.name}}</td>
+                    <td scope="col">{{row.description}}</td>
+                    <td scope="col">{{row.usage_start_time}}</td>
+                    <td scope="col">{{row.usage_end_time}}</td>
+                    <td scope="col">{{row.labels_key}}</td>
+                    <td scope="col">{{row.labels_value}}</td>
+                    <td scope="col">{{row.location}}</td>
+                    <td scope="col">{{row.region}}</td>
+                    <td scope="col">{{row.zone}}</td>
+                    <td scope="col">{{row.cost}}</td>
+                    <td scope="col">{{row.credits_amount}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
